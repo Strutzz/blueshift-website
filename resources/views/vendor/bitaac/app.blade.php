@@ -24,7 +24,7 @@
 	<div id="main_wrapper"> 
     
 	<!--********************************************* Logo Start *********************************************-->
-	<div id="logo"> <a href="#"><img alt="alt_example" src="{{ asset('/images/logo.png') }}"  /></a>
+	<div id="logo"> <a href="#"><img alt="alt_example" src="{{ asset('/images/logo.jpg') }}"  /></a>
 		<div id="social_ctn"> 
    
 			<a class="social_t"><img alt="alt_example" src="{{ asset('/images/social_tleft.png') }}" /></a> 
