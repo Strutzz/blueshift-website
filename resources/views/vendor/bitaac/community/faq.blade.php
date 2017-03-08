@@ -3,8 +3,7 @@
 @section('content')
     {{-- Page breadcrumbs. --}}
     @section('breadcrumbs')
-        <li>Community
-        <li>FAQ
+Community // FAQ
     @stop
 
     {{-- Page content. --}}
@@ -15,7 +14,7 @@
             <th colspan="3">General Information</th>
         </tr>
 
-        <tr>
+       {{--  <tr>
             <td width="20%">Skill rate</td>
             <td>{{ config_lua('rateSkill') }}x</td>
         </tr>
@@ -47,6 +46,6 @@
         <tr>
             <td width="20%">Black skull</td>
             <td>{{ config_lua('killsToBlackSkull') }} frags</td>
-        </tr>
+        </tr> --}}
     </table>
 @endsection

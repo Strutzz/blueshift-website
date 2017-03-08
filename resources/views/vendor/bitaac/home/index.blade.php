@@ -1,5 +1,5 @@
 @extends('bitaac::app')
-
+<?php $show_slider =TRUE; ?>
 {{-- Page breadcrumbs. --}}
 @section('breadcrumbs')
 Latest News

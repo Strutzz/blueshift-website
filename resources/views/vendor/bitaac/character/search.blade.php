@@ -1,43 +1,43 @@
 @extends('bitaac::app')
-
+<?php $full_wrapper = TRUE; ?>
 @section('content')
-    {{-- Page breadcrumbs. --}}
-    @section('breadcrumbs')
-        <li>Community
-        <li>Search Character
-    @stop
+{{-- Page breadcrumbs. --}}
+@section('breadcrumbs')
+Community // Search Character
+
+@stop
 
 
-    {{-- Page content. --}}
-    @include('bitaac::partials.heading', ['title' => 'Characters', 'desc' => 'Detailed information about a certain player.'])
+{{-- Page content. --}}
+@include('bitaac::partials.heading', ['title' => 'Characters', 'desc' => 'Detailed information about a certain player.'])
+<div id="post_wrapper">
 
+    <!-- Leave a response Start -->
+    <div id="body">
+        <h1> Search Character</h1>
 
-    <form method="POST">
-        {!! csrf_field() !!}
+        <form method="POST">
+            {!! csrf_field() !!}
 
-        <table>
-            <tr class="header">
-                <th colspan="2">Search Character</th>
-            </tr>
-
-            {{-- Character field. --}}
-            <tr>
-                <th width="20%">Character:</th>
-                <td>
-                    <input type="text" name="name">
+            <label>Character: <small><em>(required)</em></small></label>
+            <div>
+                <input type="text" name="name">
 
                     @if ($errors->has('name'))
                         <em class="error">{{ $errors->first('name') }}</em>
                     @endif
-                </td>
-            </tr>
+            </div>
+            <br/>
+            <div class="form_submit"><input type="submit" value="Submit" class="read_more2">
+            </div>
+        </form>
 
-            {{-- Submit button. --}}
-            <tr class="transparent">
-                <th></th>
-                <td><input type="submit" class="button" value="Submit"></td>
-            </tr>
-        </table>
+    </div>
+    <!-- Leave a response end -->  
 
-    </form>
+
+    <div class="clear"></div>
+</div>
+
+
 @endsection

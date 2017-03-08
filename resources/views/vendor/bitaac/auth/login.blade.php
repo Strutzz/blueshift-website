@@ -1,64 +1,56 @@
 @extends('bitaac::app')
 
 @section('content')
-    {{-- Page breadcrumbs. --}}
-    @section('breadcrumbs')
-        Account // Log In
-    @stop
+{{-- Page breadcrumbs. --}}
+@section('breadcrumbs')
+Account // Log In
+@stop
 
-    {{-- Page content. --}}
-    @include('bitaac::partials.heading', ['title' => 'Account', 'desc' => 'View and edit your account.'])
+{{-- Page content. --}}
+@include('bitaac::partials.heading', ['title' => 'Account', 'desc' => 'View and edit your account.'])
+<div id="post_wrapper">
 
-    <p>Please enter your account credentials below.<br>If you do not have an account yet, simply <a href="{{ url('/register') }}">sign up</a> up to get one.</p>
+    <!-- Leave a response Start -->
+    <div id="response" class="contact_form">
+        <h1> Account Log In</h1>
+        <p>Please enter your account credentials below. If you do not have an account yet, simply <a href="{{ url('/register') }}">sign up</a> to get one.</p>
 
-    <form method="POST">
-        {!! csrf_field() !!}
+        <form method="POST">
+            {!! csrf_field() !!}
 
-        <table>
-            <tr class="header">
-                <th colspan="2">Account Log In</th>
-            </tr>
+            <label>Account: <small><em>(required)</em></small></label>
+            <div>
+                <input type="password" name="account">
 
-            {{-- Account field. --}}
-            <tr>
-                <th width="20%">Account:</th>
-                <td>
-                    <input type="password" name="account">
+                @if ($errors->has('account'))
+                <em class="error">{{ $errors->first('account') }}</em>
+                @endif
+            </div>
+            <div>
+                <label>Password: <small><em>(required)</em></small></label>
+                <input type="password" name="password">
 
-                    @if ($errors->has('account'))
-                        <em class="error">{{ $errors->first('account') }}</em>
-                    @endif
-                </td>
-            </tr>
-
-            {{-- Password field. --}}
-            <tr>
-                <th>Password:</th>
-                <td>
-                    <input type="password" name="password">
-
-                    @if ($errors->has('password'))
-                        <em class="error">{{ $errors->first('password') }}</em>
-                    @endif
-                </td>
-            </tr>
+                @if ($errors->has('password'))
+                <em class="error">{{ $errors->first('password') }}</em>
+                @endif
+            </div>
 
             {{-- Two-Factor authentication field. --}}
             @if (config('account.two-factor'))
-                <tr>
-                    <th>2FA Code:</th>
-                    <td>
-                        <input type="text" name="2fa">
-                    </td>
-                </tr>
+            <div>
+                <label>2FA Code: <small><em>(required)</em></small></label>
+                <input type="text" name="2fa">
+            </div>
             @endif
 
-            {{-- Submit button. --}}
-            <tr class="transparent noborderpadding">
-                <th></th>
-                <td><input type="submit" value="Log In" class="button"></td>
-            </tr>
-        </table>
+            <div class="form_submit"><input type="submit" value="Log In" class="read_more2">
+            </div>
+        </form>
 
-    </form>
+    </div>
+    <!-- Leave a response end -->  
+
+
+    <div class="clear"></div>
+</div>
 @stop

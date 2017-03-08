@@ -10,6 +10,9 @@
 <link rel="stylesheet" href="{{ asset('/stylesheets/devices.css') }}" />
 <link rel="stylesheet" href="{{ asset('/stylesheets/paralax_slider.css') }}" />
 <link rel="stylesheet" href="{{ asset('/stylesheets/jquery.fancybox.css?v=2.1.2') }}" type="text/css"  media="screen" />
+
+<link rel="stylesheet" href="{{ asset('/stylesheets/post.css') }}" />
+
 <!--[if IE]>
 <link rel="stylesheet" href="stylesheets/ie.css"> 
 <![endif]-->
@@ -55,7 +58,7 @@
 					<ul>
 						<li><a href="{{ url('/character') }}">Characters</a></li>
 						<li><a href="{{ url('/deaths') }}">Deaths</a></li>
-						<li><a href="#">Who is Online</a></li>
+						<li><a href="{{ route('who_online') }}">Who is Online</a></li>
 					</ul>
 				</li>
 				<li><a href="{{ url('/forum') }}">Forum</a></li>
@@ -70,14 +73,15 @@
 				</li>
 				<li><a href="./full_page.html">Gallery</a></li>
 				<li><a href="{{ url('/faq') }}">FAQ</a></li>
-				<li><a href="./contact.html">Contact</a></li>
+				<li><a href="{{ url('/contact') }}">Contact</a></li>
 			</ul>
 			<a href="#" id="pull">Menu</a>
 			<div id="menu_right"></div>
 			<div class="clear"></div>
 		</div>
 		<!--********************************************* Mainmenu end *********************************************--> 
-    
+   
+    @if(isset($show_slider))
 		<!--********************************************* Banner start *********************************************-->
 		<div id="da-slider" class="da-slider">
 			<div class="da-slide">
@@ -98,7 +102,7 @@
 			<div class="da-arrows"> <span class="da-arrows-prev"></span> <span class="da-arrows-next"></span> </div>
 		</div>
 		<!--********************************************* Banner end *********************************************-->
-    
+    @endif
 		<div class="top_shadow"></div>
     
 		<!--********************************************* Hot news start *********************************************-->
@@ -126,9 +130,12 @@
 		<!--********************************************* Main start *********************************************-->
 		<div id="main_news_wrapper">
 			<div id="row"> 
-			
+			<?php  $default_wrapper = 'left_wrapper';
+			if(isset($full_wrapper))
+				$default_wrapper = 'full_page_wrapper';
+			 ?>
 				<!-- Left wrapper Start -->
-				<div id="left_wrapper">
+				<div id="{{$default_wrapper}}">
 					<div class="header">
 						<h2><span>BLUESHIFT //</span> @yield('breadcrumbs')</h2>
 					</div>
@@ -136,7 +143,7 @@
 					<ul id="general_news">
 						@yield('content')
 					</ul>
-					
+					@if(1==2)
 					<ul id="pager">
 						<li><a href="#" ><img alt="alt_example" src="./images/left_pager.jpg" border="0"/></a></li>
 						<li><a href="#" class="active">1</a></li>
@@ -144,6 +151,7 @@
 						<li><a href="#" >3</a></li>
 						<li><a href="#"><img alt="alt_example" src="./images/right_pager.jpg" border="0"/></a></li>
 					</ul>
+					@endif
 					<div class="clear"></div>
 				</div>
 				<!-- Left wrapper end --> 

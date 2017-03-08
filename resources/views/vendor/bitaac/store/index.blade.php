@@ -1,14 +1,17 @@
 @extends('bitaac::app')
-
+<?php $full_wrapper = TRUE; ?>
 @section('content')
     {{-- Page breadcrumbs. --}}
     @section('breadcrumbs')
-        <li>Store
+      Store
     @stop
 
     {{-- Page content. --}}
     @include('bitaac::partials.heading', ['title' => 'Store', 'desc' => ''])
+<div id="post_wrapper">
 
+    <div id="body">
+        <h1>Store</h1>
     <table>
         <tr class="transparent nopadding">
             <td width="70%"></td>
@@ -61,12 +64,14 @@
         </div>
     @else
         <table>
-            <tr class="header">
-                <th>Store</th>
-            </tr>
             <tr>
                 <td>There are no products as of right now. You can still purchase points if you want to get a head start, but do so at your own incentive.</td>
             </tr>
         </table>
     @endif
+    </div>
+
+
+<div class="clear"></div>
+</div>
 @stop
